@@ -14,8 +14,7 @@
       /* PulseAudio access */
       "--socket=pulseaudio",
       /* Network access */
-      "--share=network",
-      "--extra-data=Minecraft.jar:e8d90b2637b141b556670d8460d317aadb6e4f2e644e519995c428800b25f212:280212:280212:http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar"
+      "--share=network"  
   ],
   "modules": [
       {
@@ -66,8 +65,19 @@
               },
               {
                   "type": "file",
+                  "url": "http://s3.amazonaws.com/Minecraft.Download/launcher/Minecraft.jar",
+                  "sha256": "e8d90b2637b141b556670d8460d317aadb6e4f2e644e519995c428800b25f212",
+                  "path": "Minecraft.jar",
+                  "dest-filename": "Minecraft.jar"
+              },
+              {
+                  "type": "file",
                   "path": "com.mojang.Minecraft.appdata.xml"
               }
+          ],
+          "build-commands" : [
+		"mkdir -p /app/share/minecraft",
+		"cp Minecraft.jar /app/share/minecraft/Minecraft.jar"
           ]
       }
   ]
